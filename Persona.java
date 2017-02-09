@@ -33,10 +33,12 @@ public class Persona
             metabolismoBasal = (10*peso)+(6*altura)+(5*edad)+5;
         }
     }
+
     public int getCaloriasIngeridas()
     {
         return caloriasIngeridas;
     }
+
     public int comer(Comida comidaPaTi)
     {
         int quiereComer = -1;
@@ -46,5 +48,29 @@ public class Persona
             caloriasIngeridas = caloriasIngeridas + caloriasComidaActual;
         }
         return quiereComer;
+    }
+
+    public String contestar(String preguntar)
+    {
+        String preguntaHecha = preguntar;
+        String respuesta = "";
+        if(caloriasIngeridas < metabolismoBasal){
+                if(preguntaHecha.length()%3 == 0){
+                    respuesta = "SI";
+                }
+                else{
+                    respuesta = "NO";
+                }
+            }
+        
+        else{
+            respuesta = preguntaHecha.toUpperCase();
+        }
+        if(preguntaHecha.contains(nombre))
+        {
+            respuesta = preguntaHecha.toUpperCase();
+        }
+        System.out.println(respuesta);
+        return respuesta;
     }
 }
